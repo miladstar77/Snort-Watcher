@@ -16,3 +16,7 @@ in /etc/crontab
 5 * * * * root python3 /root/Snort-Watcher.py
 
 check database every hour
+
+if you delete  alert from database, script dosnt work and you must remove total_old.txt file from your home directory and run script again
+
+if you run script as root the total_old.txt is in /root

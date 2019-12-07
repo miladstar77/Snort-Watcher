@@ -169,7 +169,7 @@ elif int(old_total) < new_total:
                                                                  data['INET_NTOA(ip_src)'], data['INET_NTOA(ip_dst)'],
                                                                  new_total)
             alert_mail(message)  # send alert
-            snort_db_cursor.close()
+    snort_db_cursor.close()
 elif int(old_total) > new_total:
     print("database probably changed")
     sh_command = 'find ~ -type f -name "total_old.txt" -exec rm  total_old.txt  {} /;'

@@ -17,15 +17,15 @@ def alert_mail(mess):  # function for sending email
 
     # setup the parameters of the message
     password = "password"
-    msg['From'] = "snort@domain.ir"
-    msg['To'] = "destination@domain.ir"
+    msg['From'] = "src-email@domain.ir"
+    msg['To'] = "destination-email@domain.ir"
     msg['Subject'] = "test-snort-alert"
 
     # add in the message body
     msg.attach(MIMEText(message, 'plain'))
 
     # create server
-    server = smtplib.SMTP('smtp-server-ip-address')
+    server = smtplib.SMTP('smtm_server_ip_address')
 
     server.starttls()
 
@@ -122,9 +122,9 @@ snort_db = mysql.connector.connect(
 if not path.exists("total_old.txt"):
     total_old_file = snort_db.cursor()
     total_old_file.execute("select count(*) from acid_event ")
-    for x in total_old_file:
+    for sum_data_old in total_old_file:
         total_old = open("total_old.txt", "w")
-        total_old.write(str(x))
+        total_old.write(str(sum_data_old))
         total_old.close()
         print("{}\ntotal_old.txt created please run script again ".format(current_local_time))
         total_old_file.close()
@@ -139,12 +139,12 @@ else:
 # sum of all events
 snort_sum = snort_db.cursor()
 snort_sum.execute("select count(*) from acid_event ")
-for x in snort_sum:
+for sum_data in snort_sum:
     total_old = open("total_old.txt", "w")
-    total_old.write(str(x))
+    total_old.write(str(sum_data))
     total_old.close()
-    print("newest_row_number : %s " % x)
-    new_total = int(x[0])
+    print("newest_row_number : %s " % sum_data)
+    new_total = int(sum_data[0])
     snort_sum.close()
 
 # check for alert
@@ -172,6 +172,7 @@ elif int(old_total) < new_total:
             snort_db_cursor.close()
 elif int(old_total) > new_total:
     print("database probably changed")
+    sh_command = 'find ~ -type f -name "total_old.txt" -exec rm  total_old.txt  {} /;'
 
 snort_db.close()
 

@@ -17,3 +17,5 @@ in /etc/crontab
 
 check database every hour
 
+example of email subject :
+[Nids][Sensor1][denial-of-service ]

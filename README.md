@@ -3,7 +3,7 @@ this script is used for watch snort alert on database and send them by email in 
 
 mysql and barnyard must installed and configured then snort-watcher read data from database
 
-please change variable of database information and email in script
+please define variable of database information and email in ex_var.py 
 
 first install mysql-connector :
 
@@ -19,3 +19,6 @@ check database every hour
 
 example of email subject :
 [Nids][Sensor1][denial-of-service ]
+
+you can define your sensor id and name in script :
+sensor_sid = {'17': 'Shatel.ir', '18': 'Dns'}

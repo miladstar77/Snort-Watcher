@@ -22,3 +22,4 @@ example of email subject :
 
 you can define your sensor id and name in script :
 sensor_sid = {'17': 'Shatel.ir', '18': 'Dns'}
+its depend on sensor id on base , you can see your sensor id on base 

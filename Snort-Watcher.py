@@ -6,6 +6,7 @@ from email.mime.text import MIMEText
 import smtplib
 from os import path
 import time
+from ex_var import *
 
 current_local_time = time.asctime(time.localtime(time.time()))  # generate script runtime
 
@@ -18,16 +19,16 @@ def alert_mail(m_message, m_sensor, m_subject):  # function for sending email
     subject = m_subject
     sensor = m_sensor
     # setup the parameters of the message
-    password = "password"
-    msg['From'] = "src-email@domain.ir"
-    msg['To'] = "destination-email@domain.ir"
+    password = mail_pass
+    msg['From'] = mail_from
+    msg['To'] = mail_to
     msg['Subject'] = "[Nids][{}][{}]".format(sensor, subject)
 
     # add in the message body
     msg.attach(MIMEText(message, 'plain'))
 
     # create server
-    server = smtplib.SMTP('smtm_server_ip_address')
+    server = smtplib.SMTP(mail_server)
 
     server.starttls()
 
@@ -108,10 +109,10 @@ you can see a class name using by snort in this table and choose from them
 """
 
 # information for connecting to database
-db_host = "localhost"
-db_user = "root"
-db_password = "password"
-db_remote_database = "snort"
+db_host = var_db_host
+db_user = var_db_user
+db_password = var_db_password
+db_remote_database = var_db_remote_database
 
 # connect to db
 snort_db = mysql.connector.connect(

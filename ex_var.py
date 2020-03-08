@@ -2,7 +2,7 @@
 mail_pass = "password"
 mail_from = "src-email@domain.ir"
 mail_to = "destination-email@domain.ir"
-mail_server = 'smtm_server_ip_address'
+mail_server = 'smtp_server_ip_address'
 
 # define information about database
 var_db_host = "localhost"

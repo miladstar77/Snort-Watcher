@@ -1,4 +1,4 @@
-#Snort-Watcher
+# Snort-Watcher
 ## overview 
 this script is used for watch snort alert on database and send them by email in linux systems
 
